@@ -1,21 +1,16 @@
-domain_name:            hrdev
-pia_gateway_user:       administrator
-pia_auth_token_domain:  '.psadmin.io'
-
 pia_domain_list:
-  "%{hiera('domain_name')}":
-    os_user:            "%{hiera('domain_user')}"
-    ps_cfg_home_dir:    "%{hiera('peoplesoft_base')}/%{hiera('domain_name')}-%{hiera('tools_version')}"
-    gateway_user:       "%{hiera('pia_gateway_user')}"
-    gateway_user_pwd:   'password'
-    auth_token_domain:  "%{hiera('pia_auth_token_domain')}"
-    cookie_name:        "%{hiera('domain_name')}-PORTAL-JSESSIONID"
+  hrdev:
+    os_user:            psadm
+    ps_cfg_home_dir:    e:/psoft/hrdev-8.55.06
+    gateway_user:       administrator
+    gateway_user_pwd:   'Passw0rd'
+    auth_token_domain:  .psadmin.io
     
     webserver_settings:
-      webserver_type:           "%{hiera('webserver_type')}"
-      webserver_home:           "%{hiera('weblogic_location')}"
+      webserver_type:           weblogic
+      webserver_home:           e:/psoft/pt/bea
       webserver_admin_user:     system
-      webserver_admin_user_pwd: 'password'
+      webserver_admin_user_pwd: 'Passw0rd'
       webserver_admin_port:     10020
       webserver_http_port:      10020
       webserver_https_port:     10030
@@ -27,9 +22,10 @@ pia_domain_list:
     site_list:
       "%{hiera('domain_name')}":
         appserver_connections: app-d1:10010
-        domain_conn_pwd:       'password'
+        domain_conn_pwd:       'Passw0rd'
 
         webprofile_settings:
           profile_name:        DEV
           profile_user:        PTWEBSERVER
-          profile_user_pwd:    'password'
+          profile_user_pwd:    'Passw0rd'
+        report_repository_dir: e:/psreports
